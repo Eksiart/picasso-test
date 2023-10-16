@@ -15,7 +15,7 @@ if (!container) {
 }
 
 const root = createRoot(container);
-const router = createBrowserRouter(newRouteConfig)
+const router = createBrowserRouter(newRouteConfig, { basename: import.meta.env.BASE_URL })
 
 root.render(
 		<ApiProvider api={rtkApi}>

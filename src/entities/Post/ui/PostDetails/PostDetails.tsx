@@ -14,15 +14,19 @@ interface PostDetailsProps {
 export const PostDetails = ({ id, className }: PostDetailsProps) => {
   const navigate = useNavigate();
   const { data, error, isLoading } = useGetPostByIdQuery(id);
-  if (error) {
-    return (
+  if (error && 'status' in error) {
+    if (error.status === 404) return (
+        <div>Post not found</div>
+    )
+    else return (
       <>
         <div>Error when loading post</div>
+        <div>Request status: {error.status}</div>
       </>
     );
   }
 
-  if (isLoading) {
+  if (isLoading || !data) {
     return <div className={cls.Loader}>Loading post...</div>;
   }
 
@@ -42,7 +46,7 @@ export const PostDetails = ({ id, className }: PostDetailsProps) => {
         align={"center"}
       />
       <Text className={cls.Body} text={data.body} />
-      <Button onClick={() => navigate(-1) || navigate(getRoutePosts())}>
+      <Button onClick={() => navigate(getRoutePosts())}>
         Назад
       </Button>
     </div>
