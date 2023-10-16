@@ -16,18 +16,18 @@ export const PostDetails = ({ id, className }: PostDetailsProps) => {
   const { data, error, isLoading } = useGetPostByIdQuery(id);
   if (error && 'status' in error) {
     if (error.status === 404) return (
-        <div>Post not found</div>
+        <div className={cls.Center}>Post not found</div>
     )
     else return (
-      <>
+      <div className={cls.Center}>
         <div>Error when loading post</div>
         <div>Request status: {error.status}</div>
-      </>
+      </div>
     );
   }
 
   if (isLoading || !data) {
-    return <div className={cls.Loader}>Loading post...</div>;
+    return <div className={cls.Center}>Loading post...</div>;
   }
 
   return (

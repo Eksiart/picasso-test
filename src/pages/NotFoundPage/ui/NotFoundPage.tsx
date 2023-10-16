@@ -1,4 +1,6 @@
 import { Page } from "@/widgets/Page";
+import classNames from "classnames";
+import cls from './NotFoundPage.module.scss';
 
 interface NotFoundPageProps {
 	className?: string;
@@ -7,9 +9,11 @@ interface NotFoundPageProps {
 export const NotFoundPage = ({ className }: NotFoundPageProps) => {
 	return (
 		<Page
-			className={className}
+			className={classNames(cls.Center, className)}
 		>
-			Page Not Found
+			<div>
+				Page Not Found
+			</div>
 		</Page>
 	);
 };
