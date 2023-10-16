@@ -1,12 +1,12 @@
 import { Page } from "@/widgets/Page";
-import { PostList } from "@/entities/Post/ui/PostList/PostList.tsx";
+import { PostList } from "@/entities/Post";
 
 const PostsPage = () => {
-	return (
-		<Page>
-			<PostList />
-		</Page>
-	)
-}
+  return (
+    <Page>
+      <PostList />
+    </Page>
+  );
+};
 
 export default PostsPage;
