@@ -1,24 +1,23 @@
 import { useParams } from "react-router-dom";
 import { Page } from "@/widgets/Page";
-import { PostDetails } from "@/entities/Post/ui/PostDetails/PostDetails.tsx";
+import { PostDetails } from "@/entities/Post";
 
 interface PostDetailsPageProps {
-	className?: string;
+  className?: string;
 }
 
 const PostDetailsPage = ({ className }: PostDetailsPageProps) => {
+  const { id } = useParams<{ id: string }>();
 
-	const { id } = useParams<{ id: string }>();
+  if (!id) {
+    return null;
+  }
 
-	if (!id) {
-		return null;
-	}
-
-	return (
-		<Page className={className}>
-			<PostDetails id={id} />
-		</Page>
-	)
-}
+  return (
+    <Page className={className}>
+      <PostDetails id={id} />
+    </Page>
+  );
+};
 
 export default PostDetailsPage;
